@@ -1,0 +1,17 @@
+{
+  "name": "EBFSession05",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/edgar-treischl/EBFSession05.git",
+  "author": "edgar.treischl <edgar.treischl@isb.bayern.de>",
+  "license": "MIT",
+  "dependencies": {
+    "reveal.js": "5",
+    "vite": "^8.0.3"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>EBF Session 05</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Edgar Treischl" />
+    <meta name="date" content="2022-05-02" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <script src="libs/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+class: center, middle
+
+# Vorlesung: Empirische Bildungsforschung
+### Sitzung 5: Soziale Herkunft
+
+
+.large[Dr. Edgar Treischl] &lt;br&gt;
+.large[Last update: 2022-05-02]
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;p align="left" style="font-size:75%;"&gt;This presentation is licensed under a CC-BY-NC 4.0 license.
+You may copy, distribute, and use the slides in your own work, as long
+as you give attribution to the original author on each slide that you use.
+Commercial use of the contents of these slides is not allowed.&lt;/p&gt;
+&lt;br&gt;
+&lt;img align="right" src="by-nceu.png" width="150px"/&gt;
+
+---
+
+
+## Ablauf und Lernziele
+
+###  Einfluss der sozialen Herkunft auf ....
+
+1. Bildungsoutcomes
+
+2. nicht-schulische Outcomes
+
+3. im Bildungsverlauf
+
+4. im Zeitverlauf
+
+
+
+
+---
+
+# 1. Bildungsoutcomes
+## Kompetenzen
+
+&lt;img src="media/Bild2.png" style="width: 85%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: www.pisa.tum.de&lt;/p&gt; 
+
+
+
+
+
+---
+## Bildungstrichter
+
+&lt;center&gt;
+&lt;img src="media/Bild7.png" style="width: 50%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Abbildung: BPB&lt;/p&gt; 
+&lt;/center&gt;
+
+
+---
+
+## Certeris paribus I
+
+&gt; Ungleichheit heißt nicht Ungerechtigkeit, oder gar Diskriminierung 
+
+
+&lt;img src="media/Bild11.png" style="width: 95%"  /&gt;
+
+
+
+
+---
+
+## Certeris paribus II
+
+&lt;img src="media/Bild12.png" style="width: 95%"  /&gt;
+
+
+
+
+
+---
+
+## Nicht-schulische Outcomes: The good news
+
+
+&lt;img src="media/life-expectancy-at-birth-oecd.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: https://ourworldindata.org/&lt;/p&gt; 
+
+
+
+
+---
+
+## The bad news
+
+
+&lt;img src="media/Bild22.png" style="width: 85%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Robert Koch Institut&lt;/p&gt; 
+
+
+
+
+
+---
+
+## Einkommensungleichheit
+
+![](05_EBF_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+
+
+---
+
+## Gini Koeffizient
+
+### - Statistisches Maß zur Darstellung von Ungleichverteilungen
+
+### - Wertebereich: Zwischen 0 (bei einer gleichmäßigen Verteilung) und 1 (bei maximaler Ungleichverteilung)
+
+### - Beispiel Einkommen: 0 = jede Person hat gleich viel Einkommen; 1 = eine Person hat das komplette Einkommen
+
+
+
+
+---
+
+## Einkommensungleichheit: International
+
+
+&lt;img src="media/economic-inequality-gini-index.png" style="width: 95%"  /&gt;
+
+
+
+
+
+
+---
+
+## Arbeitsbelastung
+
+
+![](05_EBF_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+
+
+
+---
+
+## Bewegung
+
+
+&lt;img src="media/Bild24a.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Datenreport 2018&lt;/p&gt; 
+
+
+
+
+
+---
+
+## Weitere Gründe
+
+
+&lt;img src="media/Bild27.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Robert Koch Institut&lt;/p&gt; 
+
+
+---
+## Vertiefung: Logistische Regression
+
+![](05_EBF_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+
+
+
+---
+class: middle, center
+
+### Odds Ratios (OR) 
+
+
+&lt;p style="font-size:120%;"&gt;OR drücken ein Chancenverhältnis aus und werden häufig berichtet wenn das Outcome der Forschungsfrage binär vorliegt. Zur Illustration gehen wir jedoch einer anderen Forschungsfrage nach.&lt;/p&gt; 
+
+&lt;p style="font-size:120%;"&gt;Formal ausgedrückt: Das Chancenverhältnis (Odds-Ratio) ist somit definiert als Quotient aus der Chance, dass ein bestimmtes Ereignis in einer Gruppe eintritt und der Chance, dass dieses Ereignis in einer anderen Gruppe eintritt. &lt;/p&gt; 
+
+
+&lt;p style="font-size:120%;"&gt;Beispiel: War die Chance den Untergang der Titanic zu überleben (Outcome: 0=nicht überlebt; 1 überlebt) für Frauen größer als für Männer?&lt;/p&gt; 
+
+
+---
+class: middle, center
+
+
+### Let's be brave
+
+&lt;p style="font-size:120%;"&gt;Das Chancenverhältnis die Titanic überlebt zu haben kann zur Illustration per Hand ☠ berechnen werden &lt;/p&gt; 
+
+
+---
+
+
+## Odds Ratio per Hand berechnen ☠
+
+![](05_EBF_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+- Odds der Männer die Titanic zu überleben (109 / 468) *geteilt durch* die Odds der Frauen (233 / 81)
+
+
+
+
+---
+
+## Odds Ratio per Hand berechnen ☠
+
+
+
+```r
+#Odds der Männer zu überleben: 
+109 / 468
+```
+
+```
+## [1] 0.232906
+```
+
+
+```r
+#Odds der Frauen zu überleben: 
+233 / 81
+```
+
+```
+## [1] 2.876543
+```
+
+
+```r
+#OR von Männer gegenüber Frauen zu überleben: 
+0.232906 / 2.876543
+```
+
+```
+## [1] 0.08096733
+```
+
+
+---
+
+
+## Vgl. Ergebnis einer logistischen Regression
+
+
+```r
+results_titanic
+```
+
+```
+## (Intercept)     Sexmale 
+##  2.87654321  0.08096732
+```
+
+- **Interpretation**: Männer haben gegenüber Frauen eine um den Faktor 0.08 geringere Chance den Untergang der Titanic zu überleben.
+
+
+- **Merke**: Odds Ratio ist keine Wahrscheinlichkeit, sondern ein Wahrscheinlichkeitsverhältnis
+
+- **Interpretation**:
+  - OR = 1: Kein Effekt
+  - OR &gt; 1: positiver Effekt 
+  - 0 &lt; OR &lt; 1: negativer Effekt
+
+
+
+
+
+---
+
+#2. Im Bildungsverlauf
+
+## Schuleintritt
+
+
+&lt;img src="media/boudon.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Heckman (2006)&lt;/p&gt; 
+
+
+
+---
+
+## Übergang zum Gymnasium
+
+
+&lt;img src="media/Bild5.png" style="width: 60%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: BPB&lt;/p&gt; 
+
+
+
+---
+
+## Hochschulabschluss
+
+
+&lt;img src="media/Bild13.png" style="width: 80%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Bildungsbericht 2014&lt;/p&gt; 
+
+
+
+---
+
+## Vertiefungslides: Übertrittsempfehlung
+
+
+&lt;img src="media/Bild4.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Becker (2016)&lt;/p&gt; 
+
+
+
+---
+
+## Übergang zum Gymnasium nach Bundesland
+
+
+&lt;img src="media/Bild6.png" style="width: 50%"  /&gt;
+&lt;p style="font-size:45%;"&gt;Source: BPB&lt;/p&gt; 
+
+
+
+---
+
+## Master
+
+
+&lt;img src="media/Bild14.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Lörz et al. 2015&lt;/p&gt; 
+
+
+
+
+---
+
+## Promotion
+
+
+&lt;img src="media/Bild15.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Triventi 2011&lt;/p&gt; 
+
+
+
+
+---
+# 3. Im Zeitverlauf
+
+## Bildungsexpansion
+
+### - Reform und Ausdehnung des sekundären und tertiären Bildungswesens
+
+### - Hoffnung: Abbau sozialer Ungleichheit in der Bildungsbeteiligung und Erhöhung gesellschaftlicher Durchlässigkeit 
+
+
+---
+
+## Empirische Befunde
+
+### - Deutliche Niveaueffekte: Quantitative Zunahme der Bildungsbeteiligung
+
+### - Geringe Struktureffekte: Deutlicher Zusammenhang von Schichtzugehörigkeit und Schulbesuch (Fahrstuhleffekt) 
+
+
+
+
+---
+
+## Niveaueffekte 1
+
+
+&lt;img src="media/Bild17.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: BPB&lt;/p&gt; 
+
+
+---
+
+## Niveaueffekte 2
+
+
+&lt;img src="media/Bild1.png" style="width: 70%"  /&gt;
+&lt;p style="font-size:40%;"&gt;Source: BPB&lt;/p&gt; 
+
+
+
+---
+
+## Struktureffekte
+
+
+&lt;img src="media/Bild18.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: BPB&lt;/p&gt; 
+
+
+
+---
+
+## Weitere Befunde hinsichtlich der Bildunsexpansion
+
+### - Anpassung der Chancen bei sekundären Abschlüssen (Mittlere Reife)
+
+### - Zugang zu tertiärer Bildung hat sich für „bildungsferne Schichten“ verschlechtert
+
+### - Soziale Homogenität in Hauptschulen (Mittelschulen) gestiegen 
+
+
+
+---
+
+## Soziale Homogenität 1
+
+
+&lt;img src="media/Bild19.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Solga &amp; Wagner 2001&lt;/p&gt; 
+
+
+---
+
+## Soziale Homogenität 2
+
+
+&lt;img src="media/Bild21.png" style="width: 90%"  /&gt;
+&lt;p style="font-size:50%;"&gt;Source: Solga &amp; Wagner 2001&lt;/p&gt; 
+
+
+
+
+
+
+
+
+---
+
+# Zusammenfassung
+
+### - Soziale Herkunft hat einen starken Effekt auf Bildungserfolg (Kompetenzen, Noten)
+
+### - Soziale Herkunft wirkt sich auf andere Ungleichheitsbereiche aus: Gesundheit, Sport
+
+### - Soziale Herkunft wirkt sich fast auf den gesamten Bildungsverlauf aus: Vom Kindergarten bis zur Uni
+
+### - Bisherige Bemühungen konnten soziale Herkunftseffekte nicht beseitigen
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

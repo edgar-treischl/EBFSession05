@@ -1,0 +1,588 @@
+---
+title: "EBF Session 05"
+subtitle: "Soziale Herkunft"
+author: "Dr. Edgar Treischl"
+#institute: "RStudio, PBC"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    seal: false
+    #chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      titleSlideClass: [center, middle]
+---
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(titanic)
+library(broom)
+library(tidyverse)
+library(fontawesome)
+library(xaringanExtra)
+
+train_df<- titanic::titanic_train
+
+train_df$Survived <- factor(train_df$Survived, 
+                            levels = c(0, 1),
+                            labels = c("Not survived", "Survived")) 
+
+train_df$Pclass <- factor(train_df$Pclass, 
+                          levels = c(1, 2 , 3),
+                          labels = c("First class", "Second class", "Third class")) 
+
+titanic_model <- glm(Survived ~ Sex , family = binomial(link = 'logit'), data = train_df)
+
+results_titanic <- exp(titanic_model$coefficients)
+
+
+setwd("C:/Users/gu99mywo/Dropbox/Lehre/Bildung/Vorlesung Bildung EF/SoSe2021/Folien/05_Soziale_HK_F")
+
+library(readr)
+library(gridExtra)
+library(cowplot)
+
+allbus_einkommen <- read_csv("allbus_einkommen.csv")
+
+
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+
+```{r best-features, echo=FALSE}
+#search
+
+xaringanExtra::use_tachyons()
+xaringanExtra::use_tile_view()
+xaringanExtra::use_webcam()
+
+```
+
+class: center, middle
+
+# Vorlesung: Empirische Bildungsforschung
+### Sitzung 5: Soziale Herkunft
+
+
+.large[Dr. Edgar Treischl] <br>
+.large[Last update: `r Sys.Date()`]
+
+
+<br>
+<br>
+<br>
+<p align="left" style="font-size:75%;">This presentation is licensed under a CC-BY-NC 4.0 license.
+You may copy, distribute, and use the slides in your own work, as long
+as you give attribution to the original author on each slide that you use.
+Commercial use of the contents of these slides is not allowed.</p>
+<br>
+<img align="right" src="by-nceu.png" width="150px"/>
+
+---
+
+
+## Ablauf und Lernziele
+
+###  Einfluss der sozialen Herkunft auf ....
+
+1. Bildungsoutcomes
+
+2. nicht-schulische Outcomes
+
+3. im Bildungsverlauf
+
+4. im Zeitverlauf
+
+
+
+
+---
+
+# 1. Bildungsoutcomes
+## Kompetenzen
+
+<img src="media/Bild2.png" style="width: 85%"  />
+<p style="font-size:50%;">Source: www.pisa.tum.de</p> 
+
+
+
+
+
+---
+## Bildungstrichter
+
+<center>
+<img src="media/Bild7.png" style="width: 50%"  />
+<p style="font-size:50%;">Abbildung: BPB</p> 
+</center>
+
+
+---
+
+## Certeris paribus I
+
+> Ungleichheit heißt nicht Ungerechtigkeit, oder gar Diskriminierung 
+
+
+<img src="media/Bild11.png" style="width: 95%"  />
+
+
+
+
+---
+
+## Certeris paribus II
+
+<img src="media/Bild12.png" style="width: 95%"  />
+
+
+
+
+
+---
+
+## Nicht-schulische Outcomes: The good news
+
+
+<img src="media/life-expectancy-at-birth-oecd.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: https://ourworldindata.org/</p> 
+
+
+
+
+---
+
+## The bad news
+
+
+<img src="media/Bild22.png" style="width: 85%"  />
+<p style="font-size:50%;">Source: Robert Koch Institut</p> 
+
+
+
+
+
+---
+
+## Einkommensungleichheit
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=10}
+p1 <- ggplot(allbus_einkommen, aes(einkommen)) +
+  geom_histogram()+
+  xlab("Einkommen in Deutschland")+
+  ylab("")+
+  labs(caption = "Data: Allbus 2010")+
+  theme_minimal(base_size = 16)
+
+p2<- ggplot(allbus_einkommen, aes(einkommen)) +
+  geom_boxplot()+
+  theme_void()
+  
+
+plot_grid(p2, p1, align = "v", nrow = 2, rel_heights = c(1/6, 5/6))
+```
+
+
+
+---
+
+## Gini Koeffizient
+
+### - Statistisches Maß zur Darstellung von Ungleichverteilungen
+
+### - Wertebereich: Zwischen 0 (bei einer gleichmäßigen Verteilung) und 1 (bei maximaler Ungleichverteilung)
+
+### - Beispiel Einkommen: 0 = jede Person hat gleich viel Einkommen; 1 = eine Person hat das komplette Einkommen
+
+
+
+
+---
+
+## Einkommensungleichheit: International
+
+
+<img src="media/economic-inequality-gini-index.png" style="width: 95%"  />
+
+
+
+
+
+
+---
+
+## Arbeitsbelastung
+
+
+```{r, echo=FALSE, fig.width=10}
+df<- tribble(
+  ~Sex, ~Sektor, ~outcome, ~Belastung,
+  #--|--|----
+  "Männer", "Niedriglohn", 33.1, "Körperlich",
+  "Männer", "Mittlerer Lohn", 29.5, "Körperlich",
+  "Männer", "Hoher Lohn", 9.9, "Körperlich",
+  "Männer", "Niedriglohn", 37.1, "Psychosozial",
+  "Männer", "Mittlerer Lohn", 19.3, "Psychosozial",
+  "Männer", "Hoher Lohn", 11.1, "Psychosozial",
+  "Frauen", "Niedriglohn", 3.5, "Körperlich",
+  "Frauen", "Mittlerer Lohn", 2.3, "Körperlich",
+  "Frauen", "Hoher Lohn", 1.2, "Körperlich",
+  "Frauen", "Niedriglohn", 42.5, "Psychosozial",
+  "Frauen", "Mittlerer Lohn", 23.4, "Psychosozial",
+  "Frauen", "Hoher Lohn", 12.4, "Psychosozial"
+)
+
+df$Sektor <- factor(df$Sektor,
+                    levels = c("Niedriglohn", "Mittlerer Lohn", "Hoher Lohn"),
+                    labels = c("Niedriglohn", "Mittlerer Lohn", "Hoher Lohn")) 
+
+df$Belastung <- factor(df$Belastung,
+                    levels = c("Körperlich", "Psychosozial"),
+                    labels = c("Körperlich", "Psychosozial"))
+
+
+ggplot(data=df, aes(x=Sektor, y=outcome, fill = Belastung)) +
+  geom_bar(stat="identity", position = "dodge2")+
+  geom_text(
+    aes(label = outcome),
+    position = position_dodge(0.9),
+    vjust = 1,
+    color = "white",
+    size = 5)+
+  facet_wrap(~ Sex)+
+  ylab("Prozent")+
+  theme_minimal(base_size = 16)+
+  scale_fill_manual(values=c("#7AA6DC","#003C67"))+
+  labs(caption = "Source: Datenreport 2018")+
+  theme(legend.position="bottom")
+```
+
+
+
+
+---
+
+## Bewegung
+
+
+<img src="media/Bild24a.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Datenreport 2018</p> 
+
+
+
+
+
+---
+
+## Weitere Gründe
+
+
+<img src="media/Bild27.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Robert Koch Institut</p> 
+
+
+---
+## Vertiefung: Logistische Regression
+
+```{r, echo=FALSE, fig.width= 10, warning=FALSE, message=FALSE}
+#Plots
+set.seed(2)
+y <- rep(c(0,1), 500)
+x <- 10 + rnorm(250, 3, 3)+ rnorm(250, 10, 3)*y
+
+data <- data.frame(x, y) %>%
+  as.tibble
+
+p1 <- ggplot(data, aes(x = x, y = y)) + 
+  geom_point(color = "gray")+
+  geom_smooth(method='lm', formula= y~x, colour = "#008080")+
+  theme_minimal(base_size = 14)+
+  ggtitle("Linear")
+
+
+p2<- ggplot(data, aes(x= x, y = y)) + 
+  geom_point(color = "gray")+
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"), colour = "#008080")+
+  theme_minimal(base_size = 14)+
+  ggtitle("Logit")
+
+
+plot_grid(p1, p2, align = "h", nrow = 1, rel_heights = c(1/2, 1/2))
+
+
+```
+
+
+
+
+---
+class: middle, center
+
+### Odds Ratios (OR) 
+
+
+<p style="font-size:120%;">OR drücken ein Chancenverhältnis aus und werden häufig berichtet wenn das Outcome der Forschungsfrage binär vorliegt. Zur Illustration gehen wir jedoch einer anderen Forschungsfrage nach.</p> 
+
+<p style="font-size:120%;">Formal ausgedrückt: Das Chancenverhältnis (Odds-Ratio) ist somit definiert als Quotient aus der Chance, dass ein bestimmtes Ereignis in einer Gruppe eintritt und der Chance, dass dieses Ereignis in einer anderen Gruppe eintritt. </p> 
+
+
+<p style="font-size:120%;">Beispiel: War die Chance den Untergang der Titanic zu überleben (Outcome: 0=nicht überlebt; 1 überlebt) für Frauen größer als für Männer?</p> 
+
+
+---
+class: middle, center
+
+
+### Let's be brave
+
+<p style="font-size:120%;">Das Chancenverhältnis die Titanic überlebt zu haben kann zur Illustration per Hand ☠ berechnen werden </p> 
+
+
+---
+
+
+## Odds Ratio per Hand berechnen ☠
+
+```{r, echo=FALSE, fig.height=5, fig.width=8}
+ggplot(train_df, aes(x= Sex, fill = Survived)) + 
+  geom_bar()+
+  geom_text(stat='count', aes(label=..count..), vjust=-1,
+            position = position_stack(vjust = 0), size = 6, 
+            color = "white")+
+  theme_minimal(base_size = 18)+
+  ylab("Count")+
+  theme(legend.position="right")+
+  scale_fill_manual(values=c("#7AA6DC","#003C67"))
+```
+
+- Odds der Männer die Titanic zu überleben (109 / 468) *geteilt durch* die Odds der Frauen (233 / 81)
+
+
+
+
+---
+
+## Odds Ratio per Hand berechnen ☠
+
+
+```{r}
+#Odds der Männer zu überleben: 
+109 / 468
+```
+
+```{r}
+#Odds der Frauen zu überleben: 
+233 / 81
+```
+
+```{r}
+#OR von Männer gegenüber Frauen zu überleben: 
+0.232906 / 2.876543
+```
+
+
+---
+
+
+## Vgl. Ergebnis einer logistischen Regression
+
+```{r, echo=TRUE}
+results_titanic
+```
+
+- **Interpretation**: Männer haben gegenüber Frauen eine um den Faktor 0.08 geringere Chance den Untergang der Titanic zu überleben.
+
+
+- **Merke**: Odds Ratio ist keine Wahrscheinlichkeit, sondern ein Wahrscheinlichkeitsverhältnis
+
+- **Interpretation**:
+  - OR = 1: Kein Effekt
+  - OR > 1: positiver Effekt 
+  - 0 < OR < 1: negativer Effekt
+
+
+
+
+
+---
+
+#2. Im Bildungsverlauf
+
+## Schuleintritt
+
+
+<img src="media/boudon.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Heckman (2006)</p> 
+
+
+
+---
+
+## Übergang zum Gymnasium
+
+
+<img src="media/Bild5.png" style="width: 60%"  />
+<p style="font-size:50%;">Source: BPB</p> 
+
+
+
+---
+
+## Hochschulabschluss
+
+
+<img src="media/Bild13.png" style="width: 80%"  />
+<p style="font-size:50%;">Source: Bildungsbericht 2014</p> 
+
+
+
+---
+
+## Vertiefungslides: Übertrittsempfehlung
+
+
+<img src="media/Bild4.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Becker (2016)</p> 
+
+
+
+---
+
+## Übergang zum Gymnasium nach Bundesland
+
+
+<img src="media/Bild6.png" style="width: 50%"  />
+<p style="font-size:45%;">Source: BPB</p> 
+
+
+
+---
+
+## Master
+
+
+<img src="media/Bild14.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Lörz et al. 2015</p> 
+
+
+
+
+---
+
+## Promotion
+
+
+<img src="media/Bild15.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Triventi 2011</p> 
+
+
+
+
+---
+# 3. Im Zeitverlauf
+
+## Bildungsexpansion
+
+### - Reform und Ausdehnung des sekundären und tertiären Bildungswesens
+
+### - Hoffnung: Abbau sozialer Ungleichheit in der Bildungsbeteiligung und Erhöhung gesellschaftlicher Durchlässigkeit 
+
+
+---
+
+## Empirische Befunde
+
+### - Deutliche Niveaueffekte: Quantitative Zunahme der Bildungsbeteiligung
+
+### - Geringe Struktureffekte: Deutlicher Zusammenhang von Schichtzugehörigkeit und Schulbesuch (Fahrstuhleffekt) 
+
+
+
+
+---
+
+## Niveaueffekte 1
+
+
+<img src="media/Bild17.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: BPB</p> 
+
+
+---
+
+## Niveaueffekte 2
+
+
+<img src="media/Bild1.png" style="width: 70%"  />
+<p style="font-size:40%;">Source: BPB</p> 
+
+
+
+---
+
+## Struktureffekte
+
+
+<img src="media/Bild18.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: BPB</p> 
+
+
+
+---
+
+## Weitere Befunde hinsichtlich der Bildunsexpansion
+
+### - Anpassung der Chancen bei sekundären Abschlüssen (Mittlere Reife)
+
+### - Zugang zu tertiärer Bildung hat sich für „bildungsferne Schichten“ verschlechtert
+
+### - Soziale Homogenität in Hauptschulen (Mittelschulen) gestiegen 
+
+
+
+---
+
+## Soziale Homogenität 1
+
+
+<img src="media/Bild19.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Solga & Wagner 2001</p> 
+
+
+---
+
+## Soziale Homogenität 2
+
+
+<img src="media/Bild21.png" style="width: 90%"  />
+<p style="font-size:50%;">Source: Solga & Wagner 2001</p> 
+
+
+
+
+
+
+
+
+---
+
+# Zusammenfassung
+
+### - Soziale Herkunft hat einen starken Effekt auf Bildungserfolg (Kompetenzen, Noten)
+
+### - Soziale Herkunft wirkt sich auf andere Ungleichheitsbereiche aus: Gesundheit, Sport
+
+### - Soziale Herkunft wirkt sich fast auf den gesamten Bildungsverlauf aus: Vom Kindergarten bis zur Uni
+
+### - Bisherige Bemühungen konnten soziale Herkunftseffekte nicht beseitigen
+
+
+
